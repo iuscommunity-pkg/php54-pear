@@ -2,7 +2,7 @@
 
 %global xmlrpcver 1.5.1
 %global getoptver 1.2.3
-%global arctarver 1.3.3
+%global arctarver 1.3.13
 %global structver 1.0.2
 %global xmlutil   1.2.1
 
