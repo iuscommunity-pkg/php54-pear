@@ -4,7 +4,7 @@
 %global getoptver 1.2.3
 %global arctarver 1.3.13
 %global structver 1.0.2
-%global xmlutil   1.2.1
+%global xmlutil   1.2.3
 
 %define php_base php54
 %define basever 1.9
