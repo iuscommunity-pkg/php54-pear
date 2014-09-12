@@ -35,7 +35,9 @@ Source24: http://pear.php.net/get/XML_Util-%{xmlutil}.tgz
 
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: %{php_base}-cli, %{php_base}-xml, gnupg
+BuildRequires: %{php_base}-cli
+BuildRequires: %{php_base}-xml
+BuildRequires: gnupg
 Provides: php-pear(Console_Getopt) = %{getoptver}
 Provides: php-pear(Archive_Tar) = %{arctarver}
 Provides: php-pear(PEAR) = %{version}
