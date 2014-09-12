@@ -9,6 +9,7 @@
 %define php_base php54
 %define basever 1.9
 %define real_name php-pear
+
 Summary: PHP Extension and Application Repository framework
 Name: %{php_base}-pear
 Version: 1.9.4
@@ -34,16 +35,18 @@ Source23: http://pear.php.net/get/Structures_Graph-%{structver}.tgz
 Source24: http://pear.php.net/get/XML_Util-%{xmlutil}.tgz
 
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+%{?el5:BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)}
 BuildRequires: %{php_base}-cli
 BuildRequires: %{php_base}-xml
 BuildRequires: gnupg
+
 Provides: php-pear(Console_Getopt) = %{getoptver}
 Provides: php-pear(Archive_Tar) = %{arctarver}
 Provides: php-pear(PEAR) = %{version}
 Provides: php-pear(Structures_Graph) = %{structver}
 Provides: php-pear(XML_RPC) = %{xmlrpcver}
 Provides: php-pear(XML_Util) = %{xmlutil}
+
 Provides: %{php_base}-pear(Console_Getopt) = %{getoptver}
 Provides: %{php_base}-pear(Archive_Tar) = %{arctarver}
 Provides: %{php_base}-pear(PEAR) = %{version}
@@ -51,19 +54,18 @@ Provides: %{php_base}-pear(Structures_Graph) = %{structver}
 Provides: %{php_base}-pear(XML_RPC) = %{xmlrpcver}
 Provides: %{php_base}-pear(XML_Util) = %{xmlutil}
 Provides: %{php_base}-pear-XML-Util = %{xmlutil}-%{release}
+
 Requires: %{php_base}-cli
 
 # IUS Stuff
 Provides: %{real_name} = %{version}
 Conflicts: %{real_name} < %{basever}
 
-# FIX ME: Should be removed before/after RHEL 5.6 is out
-# See: https://bugs.launchpad.net/ius/+bug/691755
-
 
 %description
 PEAR is a framework and distribution system for reusable PHP
 components.  This package contains the basic PEAR components.
+
 
 %prep
 %setup -cT -n %{real_name}-%{version}
@@ -79,11 +81,9 @@ mv package.xml XML_Util.xml
 # apply patches on used PEAR during install
 # -- no patch
 
-%build
-# This is an empty build section.
 
 %install
-rm -rf $RPM_BUILD_ROOT
+%{?el5:%{__rm} -rf %{buildroot}}
 
 export PHP_PEAR_SYSCONF_DIR=%{_sysconfdir}
 export PHP_PEAR_SIG_KEYDIR=%{_sysconfdir}/pearkeys
@@ -153,9 +153,8 @@ grep /usr/local $RPM_BUILD_ROOT%{_sysconfdir}/pear.conf && exit 1
 grep -rl $RPM_BUILD_ROOT $RPM_BUILD_ROOT && exit 1
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-rm new-pear.conf
+%{?el5:%clean}
+%{?el5:%{__rm} -rf %{buildroot}}
 
 
 %triggerpostun -- php-pear-XML-Util
@@ -164,7 +163,6 @@ rm new-pear.conf
 
 
 %files
-%defattr(-,root,root,-)
 %{peardir}
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/pear.conf
