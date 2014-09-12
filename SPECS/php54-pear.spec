@@ -1,6 +1,6 @@
 %global peardir %{_datadir}/pear
 
-%global xmlrpcver 1.5.1
+%global xmlrpcver 1.5.5
 %global getoptver 1.2.3
 %global arctarver 1.3.13
 %global structver 1.0.2
