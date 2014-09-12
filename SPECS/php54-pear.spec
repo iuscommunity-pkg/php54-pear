@@ -1,4 +1,3 @@
-
 %global peardir %{_datadir}/pear
 
 %global xmlrpcver 1.5.1
@@ -10,9 +9,8 @@
 %define php_base php54
 %define basever 1.9
 %define real_name php-pear
-%define name %{php_base}-pear
 Summary: PHP Extension and Application Repository framework
-Name: %{name}
+Name: %{php_base}-pear
 Version: 1.9.4
 Release: 2.ius%{?dist}
 Epoch: 1
