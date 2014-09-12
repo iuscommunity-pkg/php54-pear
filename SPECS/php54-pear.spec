@@ -3,7 +3,7 @@
 %global xmlrpcver 1.5.5
 %global getoptver 1.3.1
 %global arctarver 1.3.13
-%global structver 1.0.2
+%global structver 1.0.4
 %global xmlutil   1.2.3
 
 %define php_base php54
