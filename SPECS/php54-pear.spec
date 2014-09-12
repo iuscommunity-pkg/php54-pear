@@ -12,8 +12,8 @@
 
 Summary: PHP Extension and Application Repository framework
 Name: %{php_base}-pear
-Version: 1.9.4
-Release: 2.ius%{?dist}
+Version: 1.9.5
+Release: 1.ius%{?dist}
 Epoch: 1
 License: PHP
 Group: Development/Languages
@@ -174,6 +174,14 @@ grep -rl $RPM_BUILD_ROOT $RPM_BUILD_ROOT && exit 1
 
 
 %changelog
+* Fri Sep 12 2014 Carl George <carl.george@rackspace.com> - 1:1.9.5-1.ius
+- Latest upstream
+- Update XML_RPC to 1.5.5
+- Update Console_Getopt to 1.3.1
+- Update Archive_Tar to 1.3.13
+- Update Structures_Graph to 1.0.4
+- Update XML_Util to 1.2.3
+
 * Tue Aug 21 2012 Jeffrey Ness <jeffrey.ness@rackspace.com> - 1:1.9.4-2.ius
 - Rebuilding against php54-5.4.6-2.ius as it is now using bundled PCRE.
 
