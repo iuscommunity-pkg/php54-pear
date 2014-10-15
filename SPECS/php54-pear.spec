@@ -7,13 +7,12 @@
 %global xmlutil   1.2.3
 
 %define php_base php54
-%define basever 1.9
 %define real_name php-pear
 
 Summary: PHP Extension and Application Repository framework
 Name: %{php_base}-pear
 Version: 1.9.5
-Release: 1.ius%{?dist}
+Release: 2.ius%{?dist}
 Epoch: 1
 License: PHP
 Group: Development/Languages
@@ -59,7 +58,7 @@ Requires: %{php_base}-cli
 
 # IUS Stuff
 Provides: %{real_name} = %{version}
-Conflicts: %{real_name} < %{basever}
+Conflicts: %{real_name} < %{version}
 
 
 %description
@@ -174,6 +173,9 @@ grep -rl $RPM_BUILD_ROOT $RPM_BUILD_ROOT && exit 1
 
 
 %changelog
+* Wed Oct 15 2014 Carl George <carl.george@rackspace.com> - 1:1.9.5-2.ius
+- Conflict with less than %%{version}, not %%{basever}
+
 * Fri Sep 12 2014 Carl George <carl.george@rackspace.com> - 1:1.9.5-1.ius
 - Latest upstream
 - Update XML_RPC to 1.5.5
